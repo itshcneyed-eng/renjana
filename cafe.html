@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for renjana 🍓🍵</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* café vibe background */
+    background: url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+/* soft overlay */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 240, 245, 0.55);
+}
+
+/* card */
+.card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 22px;
+    max-width: 650px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    backdrop-filter: blur(5px);
+    border: 2px solid #d7f5e6;
+}
+
+h1 {
+    color: #ff5c8a; /* strawberry */
+}
+
+#name {
+    color: #4fbf8f; /* matcha green */
+    font-size: 18px;
+    min-height: 22px;
+    margin-bottom: 10px;
+}
+
+#text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.7;
+    min-height: 180px;
+}
+
+/* buttons */
+button {
+    margin-top: 10px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #4fbf8f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff5c8a;
+}
+
+/* hug animation */
+.hug {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(3px,2px); }
+    50% { transform: translate(-3px,-2px); }
+    75% { transform: translate(2px,-1px); }
+    100% { transform: translate(0,0); }
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    width: 14px;
+    height: 14px;
+    background: #ff5c8a;
+    transform: rotate(45deg);
+    animation: float 7s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #ff5c8a;
+    border-radius: 50%;
+}
+
+.heart::before { top: -7px; left: 0; }
+.heart::after { left: -7px; top: 0; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="card" id="card">
+    <h1>matcha café for you 🍵🍓</h1>
+
+    <div id="name"></div>
+    <div id="text"></div>
+
+    <button onclick="start()">read again</button>
+    <button onclick="hug()">hug 🤍</button>
+    <button onclick="loveMore()">i love you more ♾️</button>
+</div>
+
+<script>
+
+const nameText = "renjana 🤍";
+
+const message = `welcome to our little café.
+
+where matcha is soft,
+strawberries are sweet,
+and my feelings for you are real.
+
+you don’t have to do anything here.
+
+just exist.
+
+just be you.
+
+because even in a quiet café like this,
+you are still the most special thing in the room.`;
+
+let i = 0;
+let j = 0;
+let loveLevel = 1;
+
+function typeName() {
+    if (j < nameText.length) {
+        document.getElementById("name").innerHTML += nameText.charAt(j);
+        j++;
+        setTimeout(typeName, 120);
+    }
+}
+
+function start() {
+    document.getElementById("text").innerHTML = "";
+    i = 0;
+    typeWriter();
+}
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 25);
+    }
+}
+
+function hug() {
+    let card = document.getElementById("card");
+    card.classList.add("hug");
+    setTimeout(() => card.classList.remove("hug"), 400);
+}
+
+function loveMore() {
+    loveLevel++;
+    document.getElementById("text").innerHTML += `\n\n(i love you x${loveLevel} ♾️)`;
+}
+
+// hearts
+for (let i = 0; i < 30; i++) {
+    let h = document.createElement("div");
+    h.classList.add("heart");
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (5 + Math.random() * 3) + "s";
+    document.body.appendChild(h);
+}
+
+typeName();
+start();
+
+</script>
+
+</body>
+</html>
