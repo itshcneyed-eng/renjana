@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Fairytale Written in Matcha & Strawberries 🍵🍓</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #d7f5e6, #ffe0ea);
+    overflow-x: hidden;
+}
+
+/* intro screen */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    animation: fadeOut 2s ease 2.5s forwards;
+}
+
+#intro h1 {
+    color: #ff5c8a;
+}
+
+/* timeline container */
+.container {
+    max-width: 700px;
+    margin: 120px auto;
+    padding: 20px;
+}
+
+/* chapter cards */
+.chapter {
+    background: rgba(255,255,255,0.92);
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: appear 1s ease forwards;
+}
+
+.chapter h2 {
+    color: #ff5c8a;
+}
+
+.chapter p {
+    color: #444;
+    line-height: 1.7;
+}
+
+/* animation delays */
+.chapter:nth-child(1){ animation-delay: 2s; }
+.chapter:nth-child(2){ animation-delay: 3s; }
+.chapter:nth-child(3){ animation-delay: 4s; }
+.chapter:nth-child(4){ animation-delay: 5s; }
+.chapter:nth-child(5){ animation-delay: 6s; }
+.chapter:nth-child(6){ animation-delay: 7s; }
+.chapter:nth-child(7){ animation-delay: 8s; }
+
+@keyframes appear {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* hearts */
+.heart {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: #ff5c8a;
+    transform: rotate(45deg);
+    animation: float 6s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff5c8a;
+    border-radius: 50%;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-900px) rotate(45deg); opacity: 0; }
+}
+
+/* music button */
+#musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4fbf8f;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>loading our love story… 🍓🍵</h1>
+    <p>please wait, renjana 🤍</p>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bce3b.mp3">
+</audio>
+
+<button id="musicBtn" onclick="document.getElementById('music').play()">play music 🎶</button>
+
+<!-- STORY -->
+<div class="container">
+
+<div class="chapter">
+<h2>Chapter 1 — Two Strangers</h2>
+<p>It started with nothing special… just two people becoming friends. No story. No expectations. Just time passing slowly.</p>
+</div>
+
+<div class="chapter">
+<h2>Chapter 2 — The Comfort</h2>
+<p>We talked more. Laughed more. And somehow, you became my favorite part of everyday life.</p>
+</div>
+
+<div class="chapter">
+<h2>Chapter 3 — The Hidden Feeling</h2>
+<p>I didn’t tell you at first… but I started liking you. Quietly. Softly. More than I should.</p>
+</div>
+
+<div class="chapter">
+<h2>Chapter 4 — The Truth</h2>
+<p>And then one day… you found out.</p>
+<p>I thought everything would change.</p>
+</div>
+
+<div class="chapter">
+<h2>Chapter 5 — The Unexpected Answer</h2>
+<p>But instead of leaving… you stayed.</p>
+<p>And you felt it too.</p>
+</div>
+
+<div class="chapter">
+<h2>Chapter 6 — Us</h2>
+<p>And suddenly… we weren’t just friends anymore.</p>
+<p>We became something real.</p>
+</div>
+
+<div class="chapter">
+<h2>Final Chapter — A Fairytale</h2>
+<p>And maybe it didn’t start like a fairytale…</p>
+<p>but it became one anyway.</p>
+<p><b>ours. 🤍</b></p>
+</div>
+
+</div>
+
+<script>
+
+// hearts generator
+for (let i = 0; i < 60; i++) {
+    let h = document.createElement("div");
+    h.classList.add("heart");
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.top = Math.random() * 100 + "vh";
+    h.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(h);
+}
+
+</script>
+
+</body>
+</html>
